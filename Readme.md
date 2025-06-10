@@ -86,19 +86,21 @@ uvicorn app.main:app --reload --port 9090
 - Percentage-typed cells (like 10%) are treated as 0.10 in Excel and will be summed accordingly.
 
 ## Potential Improvements
-- Auto-detect table regions instead of hardcoding row ranges
-- Support for .xls as well as .xlsx
-- Support uploading different Excel files via POST
+- Add schema validation using `pydantic` to ensure the uploaded file has expected columns, datatypes, and no critical nulls before processing.
 
 ## Missed Edge Cases
-- Empty Excel files or tables without numeric data
-- Malformed table/row names in queries
-- Unexpected data formats like merged cells or formulas
+- Data Type Mismatch
 
 ## Postman Collection
 Included as a JSON file: Postman_Collection.json
 
 Import this into Postman to test all endpoints with localhost:9090 as base URL.
+
+## Technical Notes
+
+- This app supports only `.xlsx` files.
+- `.xls` files are not supported due to compatibility issues with modern libraries (`pandas` dropped default support for `.xls` via `xlrd`).
+- Users are encouraged to convert older Excel files to `.xlsx` before uploading.
 
 ## Author
 - Submitted by: Janhavi Panvekar
