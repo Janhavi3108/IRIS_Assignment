@@ -90,6 +90,9 @@ uvicorn app.main:app --reload --port 9090
 
 ## Missed Edge Cases
 - Data Type Mismatch
+   - A column like price contains "10k" or "Not Available" instead of numbers.
+   - Summarization or calculations will fail or return incorrect results.
+   - Fix: Cast and validate columns, and skip/report rows with type mismatches.
 
 ## Postman Collection
 Included as a JSON file: Postman_Collection.json
